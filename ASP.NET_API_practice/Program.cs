@@ -36,12 +36,10 @@ var app = builder.Build();
 // --- 設定 HTTP 請求管道 (設定請求進來後要經過的關卡) ---
 // 這裡的順序「超級重要」！請求會像流水線一樣，依序通過每一個 Use...() 中間件。
 
-// 在開發模式下，啟用 Swagger 相關工具
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// 啟用 Swagger 相關工具
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // 關卡1：強制使用 HTTPS (UseHttpsRedirection)
 // 所有 HTTP 請求都會被自動導向到 HTTPS，確保通訊安全。
